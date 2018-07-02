@@ -1,0 +1,90 @@
+<html>
+
+<head>
+
+  <title<javascriptM/title>
+
+    <h1>Test Your Reactions!</h1>
+
+    <body id="body">Click on the boxes and circles  quickly as you can !</body>
+    <p id="p"></p>
+  <style type="text/css">
+
+
+    .cirlce{
+      width: 200px;
+      height: 200px;
+      border-radius:50%;
+      float: left;
+      margin: 50px;
+      position: relative;
+
+
+    }
+
+
+
+</style>
+</head>
+
+
+<body>
+
+
+
+
+  <div class="cirlce" id="red"> </div>
+
+
+  <script type="text/javascript">
+
+
+   var start;
+
+  function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+    setTimeout(function(){ shapeappear();  start =new Date().getTime();},Math.random()+500);
+
+  function shapeappear(){
+
+      if(Math.random()>0.5){
+        document.getElementById('red').style.borderRadius='50%';
+
+      }
+      else{
+
+        document.getElementById('red').style.borderRadius='0';
+      }
+      var top=Math.random() *300;
+      var left=Math.random() *300;
+      var width=Math.random() * 400;
+
+      console.log(left+" "+top+" "+width);
+      document.getElementById('red').style.backgroundColor=getRandomColor();
+      document.getElementById('red').style.display='block';
+      document.getElementById('red').style.top=top+"px";
+      document.getElementById('red').style.left=left+"px";
+      document.getElementById('red').style.width=width+"px";
+      document.getElementById('red').style.height=width+"px";
+
+      }
+  document.getElementById('red').onclick=function(){
+  var end=new Date().getTime();
+  var timetaken=(end-start)/1000;
+  document.getElementById('red').style.display='none';
+  document.getElementById("p").innerHTML=""+timetaken+"s";
+   start =new Date();
+     setTimeout(function(){ shapeappear();  start =new Date().getTime();},Math.random()+500);
+}
+  </script>
+
+</body>
+
+</html>
